@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ST. PETER'S SCHOOL - Academic Progress Report</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Times+New+Roman:wght@400;700&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
+        body {
+            background-color: white;
+            color: black;
+            line-height: 1.4;
+            padding: 20px;
+            max-width: 8.5in;
+            margin: 0 auto;
+            font-size: 14px;
+        }
+        
+        /* Header Section - Fixed */
+        .header {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 5px;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .logo-placeholder {
+            width: 1.4in;
+            height: 1.12in;
+            background-color: #000;
+            margin-right: 15px;
+            border: 1px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+        }
+        
+        .school-info {
+            flex: 1;
+        }
+        
+        .school-name {
+            text-decoration: underline;
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .address, .tel {
+            font-size: 13px;
+            margin-bottom: 3px;
+        }
+        
+        /* Report Title - Fixed to align with logo width */
+        .report-title-container {
+            display: flex;
+            margin-bottom: 10px;
+        }
+        
+        .logo-spacer {
+            width: 1.4in;
+            margin-right: 15px;
+        }
+        
+        .report-title-box {
+            flex: 1;
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+            padding: 5px 10px;
+            border: 1px solid #000;
+        }
+        
+        /* Email */
+        .email {
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 13px;
+        }
+        
+        /* Student Information Table - Fixed colspan issue */
+        .student-info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        
+        .student-info-table td {
+            padding: 8px 5px;
+            vertical-align: top;
+            border: 1px solid #000;
+        }
+        
+        .info-label {
+            font-weight: bold;
+            width: 25%;
+        }
+        
+        .empty-cell {
+            width: 25%;
+        }
+        
+        /* Sections Styling - Removed horizontal line below titles */
+        .section {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        
+        .section-title {
+            font-weight: bold;
+            font-size: 15px;
+            /* margin-bottom: 8px; */
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .skills-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 10px;
+            border: 2px solid black;
+        }
+        
+        .skills-table td {
+            padding: 8px 5px;
+            border: 2px solid #000;
+            font-size: 16px;
+        }
+        
+        .skill-item {
+            width: 80%;
+        }
+        
+        .term-column {
+            width: 20%;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        /* Removed the grayish color from term header */
+        .term-header {
+            background-color: white;
+        }
+        
+        /* Star image placeholder */
+        .star-placeholder {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            vertical-align: middle;
+            margin: 0 auto;
+        }
+        
+      /* Color Code Section */
+        .color-code {
+            margin: 20px 0;
+            padding: 10px;
+            border: 1px solid #000;
+        }
+
+        .color-code-title {
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .color-item {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-height: 55px; /* Added to ensure consistent height */
+        }
+
+        .intStar {
+            font-size: 55px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 55px;
+            height: 55px;
+            line-height: 1; /* Important for vertical alignment */
+        }
+
+        /* Text alignment adjustment */
+        .color-item span:last-child {
+            display: flex;
+            align-items: center;
+            height: 55px; /* Match star height */
+            padding: 5px 0; /* Optional padding */
+        }
+
+
+        .color-item:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 12px;
+            height: 12px;
+        }
+        
+        .exceeds:before {
+            background-color: #4CAF50;
+        }
+        
+        .meets:before {
+            background-color: #FFC107;
+        }
+        
+        .needs:before {
+            background-color: #F44336;
+        }
+         */
+        /* Footer Section - Rearranged */
+        .footer {
+            margin-top: 20px;
+        }
+        
+        /* Big chart image at bottom */
+        .chart-image {
+            width: 100%;
+            height: 2.81in;
+            background-color: #000;
+            border: 1px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            margin-bottom: 20px;
+            margin-top: 100px;
+        }
+        
+        /* Principal section below chart */
+        .principal-section {
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+            margin-top: 115px;
+        }
+        
+        .signature-box {
+            border: 1px solid #000;
+            padding: 10px;
+            width: 65%;
+        }
+        
+        .signature-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .signature-line {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .signature-item {
+            text-align: center;
+            width: 30%;
+        }
+        
+        .principal-photo {
+            width: 1.6in;
+            height: 2.05in;
+            /* background-color: #000; */
+            border: 1px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+        }
+        
+        .principal-name {
+            text-align: center;
+            margin-top: 5px;
+            font-weight: bold;
+        }
+        
+
+        .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        background: white;
+        padding: 0 30px;
+      }
+
+      .header {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 20px;
+      }
+      .gold-rule {
+        height: 4px;
+        background: #f3c85b;
+        margin: 0px 40px 14px 0px;
+      }
+      .logo {
+        width: 200px;
+        height: 200px;
+        border-radius: 5px;
+      }
+
+      .school-info {
+        flex: 1;
+      }
+
+      .school-name {
+        color: #a01f23;
+        font-size: 38px;
+        font-weight: bold;
+        margin-bottom: 8px;
+      }
+
+      .school-address {
+        color: #333;
+        font-size: 18px;
+        margin-bottom: 4px;
+      }
+
+      .report-title {
+        border: 3px solid #a01f23;
+        color: #a01f23;
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+        padding: 5px;
+        margin: 20px 0;
+        margin-left: 140px;
+        margin-right: 50px;
+        margin-top: -19px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .student-info-header td {
+        padding: 10px;
+        border: 1px solid #a01f23;
+      }
+
+      .student-info-header {
+        background: #a01f23;
+        color: white;
+        font-weight: bold;
+      }
+
+      .student-details td {
+        padding: 7px;
+        border: 1px solid #a01f23;
+        font-weight: bold;
+      }
+
+      .student-details .label {
+        color: #a01f23;
+        font-weight: bold;
+        width: 23.5%;
+      }
+
+      .student-details .value {
+        background: white;
+        color: #a01f23;
+        width: 25%;
+      }
+
+      .student-details{
+        margin-bottom: 25px;
+      }
+
+      .signature-table{
+        width: 100%;
+      }
+
+        /* Page break for printing */
+        @media print {
+            body {
+                padding: 0;
+                font-size: 13px;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+   
+
+      <div class="container">
+      <!-- Header -->
+      <div class="header">
+        <div class="logo">
+          <img
+            src="../school_logo.png"
+            alt="School Logo"
+            style="width: 100%; height: 100%; object-fit: contain"
+          />
+        </div>
+        <div class="school-info">
+          <div class="school-name">ST. PETER'S SCHOOL</div>
+          <div class="gold-rule" aria-hidden="true"></div>
+          <div class="school-address">
+            Panchgani, Satara District, Pin 412805, Maharashtra State, India
+          </div>
+          <div class="school-address">
+            <strong>Tel:</strong> 02168-241584 / 240313
+          </div>
+          <div class="school-address">
+            <strong>Email:</strong> stpsoffice@peterspanchgani.org
+          </div>
+        </div>
+      </div>
+
+      <!-- Report Title -->
+      <div class="report-title">
+        ACADEMIC PROGRESS REPORT - TERM 2 - A.Y. 2025-26
+      </div>
+
+      <!-- Student Info -->
+      <table class="student-info-header">
+        <colgroup>
+          <col style="width: 36%" />
+          <col style="width: 13%" />
+        </colgroup>
+        <tr>
+          <td colspan="2">Name : {{student_name}}</td>
+          <td colspan="2">Account No. : {{acc_no}}</td>
+        </tr>
+      </table>
+
+      <table class="student-details">
+        <tr>
+          <td class="label">Date of Birth</td>
+          <td class="value"></td>
+          <td class="label">Class - Div</td>
+          <td class="value"></td>
+        </tr>
+        <tr>
+          <td class="label">G.R. No.</td>
+          <td class="value"></td>
+          <td class="label">House</td>
+          <td class="value"></td>
+        </tr>
+        <tr>
+            <td class="label">Height</td>
+            <td class="values"></td>
+            <td class="label">Weight</td>
+            <td class="value"></td>
+        </tr>
+      </table>
+
+    
+    <!-- Social and Emotional Growth -->
+    <div class="section">
+        <div class="section-title">Social and Emotional Growth</div>
+        <table class="skills-table">
+            <tr class="term-header">
+                <td></td>
+                <td class="term-column">{{term}}</td>
+            </tr>
+            <tr>
+                <td class="skill-item">Co-operates with teachers and others</td>
+                <td class="term-column"> <div class="star"> </div></td>
+            </tr>
+            <tr>
+                <td class="skill-item">Is ready to share</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+            <tr>
+                <td class="skill-item">Works and plays well with others</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+            <tr>
+                <td class="skill-item">Takes care of personal belongings</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+            <tr>
+                <td class="skill-item">Neat in appearance</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+            <tr>
+                <td class="skill-item">Expresses himself/herself clearly</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+        </table>
+    </div>
+    
+    <!-- Work Habits -->
+    <div class="section">
+        <div class="section-title">Work Habits</div>
+        <table class="skills-table">
+            <tr class="term-header">
+                <td></td>
+                <td class="term-column">{{term}}</td>
+            </tr>
+            <tr>
+                <td class="skill-item">Is Punctual</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+            <tr>
+                <td class="skill-item">Listens attentively</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+            <tr>
+                <td class="skill-item">Follows instructions</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+            <tr>
+                <td class="skill-item">Begins work promptly</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+            <tr>
+                <td class="skill-item">Completes work on time</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+        </table>
+    </div>
+    
+    <!-- Fine Motor Skills -->
+    <div class="section">
+        <div class="section-title">Fine Motor Skills</div>
+        <table class="skills-table">
+            <tr class="term-header">
+                <td></td>
+                <td class="term-column">{{term}}</td>
+            </tr>
+            <tr>
+                <td class="skill-item">Is able to maintain hand and eye Co-ordination</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+            <tr>
+                <td class="skill-item">Is able to hold the crayons/pencils correctly</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+        </table>
+    </div>
+    
+    <!-- Additional Skills Section (no title) -->
+    <div class="section">
+        <table class="skills-table">
+            <tr>
+                <td class="skill-item">Connects numbers with quantities</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+            <tr>
+                <td class="skill-item">Attempts simple addition / subtraction using objects</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+            <tr>
+                <td class="skill-item">Sorts and groups objects by color, size, or shape</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+            <tr>
+                <td class="skill-item">Arranges objects in a sequence (first, next, last)</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+        </table>
+    </div>
+    
+    <!-- Art and Music -->
+    <div class="section">
+        <div class="section-title">Art and Music</div>
+        <table class="skills-table">
+            <tr class="term-header">
+                <td></td>
+                <td class="term-column">{{term}}</td>
+            </tr>
+            <tr>
+                <td class="skill-item">Can make objects with clay</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+            <tr>
+                <td class="skill-item">Draws and colours neatly</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+            <tr>
+                <td class="skill-item">Participates in singing and music activities.</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+            <tr>
+                <td class="skill-item">Is able to recall songs and rhymes</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+        </table>
+    </div>
+    
+    <!-- Personal / Character Development -->
+    <div class="section">
+        <div class="section-title">Personal / Character Development</div>
+        <table class="skills-table">
+            <tr class="term-header">
+                <td></td>
+                <td class="term-column">{{term}}</td>
+            </tr>
+            <tr>
+                <td class="skill-item">Works Independently</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+            <tr>
+                <td class="skill-item">Neat in appearance</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+            <tr>
+                <td class="skill-item">Courtesy & Manners</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+            <tr>
+                <td class="skill-item">Looks after Personal Belongings</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+        </table>
+    </div>
+    
+    <!-- Teacher's Remarks -->
+    <!-- Teacher's Remarks -->
+<div class="section">
+    <div class="section-title">Teacher's Remarks</div>
+    <table class="skills-table" style="border: 1px solid #000; width: 100%;">
+        <tr>
+            <td style="padding: 8px 5px; border: none; border-bottom: 1px solid #000; vertical-align: top;">
+                <div style="font-weight: bold; margin-bottom: 10px;  margin-top: 20px;">Term 1:</div>
+                <div style="min-height: 60px; margin-bottom: 20px;">{{remarks}}</div>
+                <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+                    <div style="text-align: center; width: 30%; border-top: 1px solid black;">
+                        <b>Teacher's Signature</b>
+                    </div>
+                    <div style="text-align: center; width: 30%; border-top: 1px solid black;">
+                        <b>Principal's Signature</b>
+                    </div>
+                    <div style="text-align: center; width: 30%; border-top: 1px solid black;">
+                        <b>Parent's Signature</b>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+    
+    <!-- Gross Motor Skills -->
+    <div class="section">
+        <div class="section-title">Gross Motor Skills</div>
+        <table class="skills-table">
+            <tr class="term-header">
+                <td></td>
+                <td class="term-column">{{term}}</td>
+            </tr>
+            <tr>
+                <td class="skill-item">Runs, jumps, hops, and skips with coordination</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+            <tr>
+                <td class="skill-item">Shows flexibility and stretches well</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+        </table>
+    </div>
+    
+    <!-- Physical Development -->
+    <div class="section">
+        <div class="section-title">Physical Development</div>
+        <table class="skills-table">
+            <tr class="term-header">
+                <td></td>
+                <td class="term-column">{{term}}</td>
+            </tr>
+            <tr>
+                <td class="skill-item">Participates in group activities</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+            <tr>
+                <td class="skill-item">Enjoys games</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+            <tr>
+                <td class="skill-item">Is alert and enthusiastic</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+            <tr>
+                <td class="skill-item">Participates in physical exercises</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+            <tr>
+                <td class="skill-item">Sits and stands using correct posture</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+        </table>
+    </div>
+    
+    <!-- Language and Literacy Development -->
+    <div class="section">
+        <div class="section-title">Language and Literacy Development</div>
+        <table class="skills-table">
+            <tr class="term-header">
+                <td></td>
+                <td class="term-column">{{term}}</td>
+            </tr>
+            <tr>
+                <td class="skill-item">Expresses ideas clearly</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+            <tr>
+                <td class="skill-item">Is able to use and pronounce words correctly</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+            <tr>
+                <td class="skill-item">Follows Directions / Instructions</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+            <tr>
+                <td class="skill-item">Recites well</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+            <tr>
+                <td class="skill-item">Narrates stories / Understands stories</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+            <tr>
+                <td class="skill-item">Recognises words / Letters easily</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+            <tr>
+                <td class="skill-item">Correlates pictures with letters</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+        </table>
+    </div>
+    
+    <!-- Numeracy -->
+    <div class="section">
+        <div class="section-title">Numeracy</div>
+        <table class="skills-table">
+            <tr class="term-header">
+                <td></td>
+                <td class="term-column">{{term}}</td>
+            </tr>
+            <tr>
+                <td class="skill-item">Can count numbers (1-10 / 1-20)</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+            <tr>
+                <td class="skill-item">Counts and matches objects accurately</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+            <tr>
+                <td class="skill-item">Shows understanding of more / less concepts</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+            <tr>
+                <td class="skill-item">Creates and extends simple patterns</td>
+                <td class="term-column"> <div class="star"> </div></div></td>
+            </tr>
+        </table>
+    </div>
+    
+    
+   <!-- Color Code Interpretation -->
+<div class="color-code">
+    <div class="color-code-title">Interpretation of colour code:</div>
+    <div class="color-item">
+        <span class="intStar" style="color: #4CAF50;">★</span>
+        <span>Exceeds Expectations</span>
+    </div>
+    <div class="color-item">
+        <span class="intStar" style="color: #FFC107;">★</span>
+        <span>Meets Expectations</span>
+    </div>
+    <div class="color-item">
+        <span class="intStar" style="color: #F44336;">★</span>
+        <span>Needs Improvement</span>
+    </div>
+</div>
+    
+    <!-- Big chart image at bottom (as per template) -->
+    <div class="chart-image">
+        <!-- Chart/Graph Image Placeholder<br>(6.97in × 2.81in) -->
+         <img src="../preprimaryImg.png" width="720px" alt="preprimaryimg">
+    </div>
+    
+    <!-- Principal section below chart -->
+    <div class="principal-section">
+        <!-- <div class="signature-box">
+            <div class="signature-title">Term 1:</div>
+            <div class="signature-line">
+                <div class="signature-item">Teacher's Signature</div>
+                <div class="signature-item">Principal's Signature</div>
+                <div class="signature-item">Parent's Signature</div>
+            </div>
+        </div> -->
+        
+        <div>
+            <div class="principal-photo">
+              <img src="#" alt="principalImage">
+            </div>
+            <div class="principal-name">{{principal_name}}</div>
+        </div>
+        
+    </div>
+</body>
+</html>
